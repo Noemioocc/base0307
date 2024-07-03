@@ -1,0 +1,18 @@
+{%extends 'layout.html'%}
+
+
+{% block body%}
+<form action = "/update/{{repuestovyv.0}}" method = "POST">
+    <input type = "text" name = "categoria" placeholder="Categoria" value = {{repuestovyv.1}}>
+    <input type = "text" name = "codigo" placeholder="Codigo" value = {{repuestovyv.2}}>
+    <input type = "text" name = "descripcion" placeholder="Descripcion" value = {{repuestovyv.3}} size="50" maxlength="100">
+    <input type = "text" name = "marca" placeholder="Marca" value = {{repuestovyv.4}}>
+    <input type = "text" name = "modelo" placeholder="Modelo" value = {{repuestovyv.5}}>
+    <input type = "text" name = "serie" placeholder="Serie" value = {{repuestovyv.6}}>
+    <input type = "text" name = "link" placeholder="Link" value = {{repuestovyv.8}}>
+    <button type = "submit">
+        EDITAR repuesto
+    </button>
+</form>
+
+{% endblock%}

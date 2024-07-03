@@ -1,0 +1,123 @@
+{%extends 'layout.html'%}
+
+{% block body%}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+
+<p>{{message}}</p>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<br>
+<!--  
+<div class = "card card-body">
+    <form name="formSearch" method="POST" action="{{ url_for('tercer') }}" class="search">
+        <label for="lang">Anadir productos</label>
+        <button type="submit" class="search__btn">
+          <i class="bi bi-search search__icon"></i>
+          Anadir Repuesto
+        </button>
+    </form>
+    </div>
+<br>
+-->
+
+
+
+<div class = "card card-body">
+<form name="formSearch" method="POST" action="{{ url_for('secundario') }}" class="search">
+    <label for="lang">Búsquedas pasadas</label>
+    <button type="submit" class="search__btn">
+      <i class="bi bi-search search__icon"></i>
+      Ver Busquedas
+    </button>
+</form>
+</div>
+
+<br>
+
+<!--  
+<div class = "card card-body">
+    <tbody>
+        <label for="lang">Tienes 2 formas de buscar</label>
+
+        <form name="formSearch" method="POST" action="{{ url_for('buscar_codigo') }}" class="search" autocomplete="on">
+            <label for="lang">1. Buscar por código</label>
+            <input type="search" name="buscar_codigo" class="search__input" placeholder="Buscar por codigoVyV">
+            <button type="submit" class="search__btn">
+                <i class="bi bi-search search__icon"></i>
+                Buscar
+            </button>
+        </form>
+-->
+
+        <form name="formSearch" method="POST" action="{{ url_for('buscar_repuesto') }}" class="search">
+            <input type="search" name="mimi" class="search__input" placeholder="Tu Nombre" required>
+
+            <label for="lang">Buscar por: </label>
+            <select name="categoria" id="lang" style="height: 40px; width: 100px;">
+                <option value="baterias">Baterias</option>
+                <option value="teclados">Teclados</option>
+                <!--       
+                <option value="pantallas">Pantallas</option>      
+                 -->
+            </select>
+            <input type="search" name="marca" class="search__input" placeholder="Marca">
+            <input type="search" name="buscar" class="search__input" placeholder="Serie o #parte">
+           
+
+            <button type="submit" class="search__btn">
+                <i class="bi bi-search search__icon"></i>
+                Buscar
+            </button>
+        </form>
+    </tbody>
+
+    
+</div>
+
+
+<table class="table table-striped table-bordered bg-white table-sm">  
+    <thead>
+        <tr>
+            <td>Categoria</td>
+            <td>Codigo</td>
+            <td>Descripcion</td>
+            <td>Marca</td>
+            <td>Modelo</td>
+            <td>Serie</td>
+            <td>Link</td>
+            <td>Operaciones</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for repuestovyv in miData  %}
+            <tr>
+                <td>{{repuestovyv.1}}</td>
+                <td>{{repuestovyv.2}}</td>
+                <td>{{repuestovyv.3}}</td>
+                <td>{{repuestovyv.4}}</td>
+                <td>{{repuestovyv.5}}</td>
+                <td>{{repuestovyv.6}}</td>
+                <td overflow:auto >
+                    <a href = "{{repuestovyv.7}}"> {{repuestovyv.7}} </a>
+                </td>
+                <td>
+                    <a href = "/delete/{{repuestovyv.0}}"> Borrar </a>               
+                </td>
+
+            </tr>
+        {% endfor %}
+
+        
+    </tbody>
+
+</table>
+
+{% endblock%}
+

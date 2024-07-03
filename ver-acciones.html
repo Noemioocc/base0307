@@ -1,0 +1,33 @@
+{%extends 'layout.html'%}
+
+
+{% block body%}
+<table class="table table-striped table-bordered bg-white table-sm">  
+
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Categoria</td>
+            <td>Modelo</td>
+            <td>Serie</td>
+            <td>Hora</td>
+          </tr>
+    </thead>
+
+    <tbody>
+        {% for repuestovyv in miDatas  %}
+            <tr>
+                <td>{{repuestovyv.1}}</td>
+                <td>{{repuestovyv.2}}</td>
+                <td>{{repuestovyv.4}}</td>
+                <td>{{repuestovyv.3}}</td>
+                <td>{{repuestovyv.5}}</td>
+                
+ 
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock%}
